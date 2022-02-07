@@ -37,7 +37,7 @@ def handleFight():
             pyautogui.hotkey('ctrl', 'f5')
             break
 
-        time.sleep(2+uniform(1, 3.5))
+        time.sleep(2+uniform(1, 5.5))
 
 
 def handleResultScreen(screen):

@@ -2,7 +2,7 @@
 
 Se o aplicativo lhe ajudar de alguma forma, uma doação para ajudar a pagar a conta de luz sempre é bem vinda ;)
 
-### **Wallet Smart Chain ((BNB, LUS, USDT, BUSD)**
+### **Wallet Smart Chain (BNB, LUS, USDT, BUSD)**
 0x1F66230C4e98b557D3e55d7d2C047CcbA8E55bD6 
 #
 
