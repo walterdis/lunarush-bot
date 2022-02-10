@@ -15,6 +15,29 @@ from src import login, helper, bosshunt, heroselect, fight, date
 #pyautogui.PAUSE = pause
 pyautogui.FAILSAFE = False
 
+wolf = """
+                                                                  .
+                                                                 / V\\
+                                                               / `  /
+                                                              <<   |
+                                                              /    |
+                                                            /      |
+                                                          /        |
+                                                        /    \  \ /
+                                                       (      ) | |
+                                               ________|   _/_  | |
+                                             <__________\______)\__)
+=========================================================================
+======================== LUS BUSD BNB USDT USDC =========================
+============== 0x1F66230C4e98b557D3e55d7d2C047CcbA8E55bD6 ===============
+=========================================================================
+============== https://github.com/walterdis/lunarush-bot ================
+=========================================================================
+"""
+
+
+print(wolf)
+time.sleep(4)
 
 def main():
 
@@ -31,12 +54,14 @@ def main():
         screen = helper.printSreen()
         if(isModeSelectScreen(screen)):
             print('Mode select found!!!')
-            helper.clickDestination('boss-fight-mode-icon.png', 'boss-fight-mode')
+            helper.clickDestinationImage('boss-fight-mode-icon.png', 'boss-fight-mode')
+            time.sleep(2)
 
         screen = helper.printSreen()
         if(isBossHuntStageSelect(screen)):
             print('Boss stage select screen found!!!')
             bosshunt.execute()
+            time.sleep(2)
 
         screen = helper.printSreen()
         if(isHeroSelectScreen(screen)):

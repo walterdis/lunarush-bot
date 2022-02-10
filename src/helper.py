@@ -1,11 +1,31 @@
-from random import random
+from random import random, uniform
+import sys
 import cv2
 import mss
 import time
 import numpy as np
 import pyautogui
 
-def clickDestination(img, name=None, timeout=3, threshold=0.7):
+try:
+    from pyHM import mouse
+except ImportError or ModuleNotFoundError:
+    print('pyHM not found! Run pip install -r requirements.txt again.')
+    time.sleep(5)
+    sys.exit(1)
+
+#clicker = HumanClicker()
+
+
+def moveDestination(x, y, time=3):
+    mouse.move(x, y, time)
+
+
+def clickDestination(x, y, time=3):
+    moveDestination(x, y, time)
+    pyautogui.click()
+
+
+def clickDestinationImage(img, name=None, timeout=3, threshold=0.7):
     if not name is None:
         pass
 
@@ -20,11 +40,14 @@ def clickDestination(img, name=None, timeout=3, threshold=0.7):
             continue
 
         x, y, w, h = matches[0]
-        pos_click_x = x+w/2
-        pos_click_y = y+h/2
 
-        pyautogui.moveTo(pos_click_x, pos_click_y, 1 + random()/2)
-        pyautogui.click()
+        pos_click_x = round(x+w/2+uniform(2, 30))
+        pos_click_y = round(y+h/2+uniform(-2, -10))
+
+        clickDestination(pos_click_x, pos_click_y)
+
+        #pyautogui.moveTo(pos_click_x, pos_click_y, 1 + random()/2)
+        # pyautogui.click()
 
         return True
 

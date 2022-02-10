@@ -1,6 +1,6 @@
 
 import pyautogui
-from src.helper import clickDestination
+from src.helper import clickDestinationImage
 
 login_attempts = 0
 
@@ -16,15 +16,15 @@ def doLogin():
 
         return
 
-    if clickDestination('connect-wallet.png', name='connect-wallet-btn', timeout=10):
+    if clickDestinationImage('connect-wallet.png', name='connect-wallet-btn', timeout=10):
         print('Logging in!')
 
         login_attempts = login_attempts + 1
 
-    if clickDestination('wallet-sign.png', name='sign button', timeout=8):
+    if clickDestinationImage('wallet-sign.png', name='sign button', timeout=8):
         login_attempts = login_attempts + 1
 
-        if clickDestination('boss-fight-mode-icon.png', name='Boss Hunt', timeout=15):
+        if clickDestinationImage('boss-fight-mode-icon.png', name='Boss Hunt', timeout=15):
             login_attempts = 0
 
         return

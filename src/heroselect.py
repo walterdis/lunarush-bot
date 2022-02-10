@@ -1,4 +1,4 @@
-from random import random
+from random import random, uniform
 from time import sleep
 from src import helper, fight, date
 import pyautogui
@@ -17,8 +17,13 @@ def removeDepletedHeroes(screen):
     heroesPositions = getSelectedHeroesDepletedPositions(screen)
 
     for (x, y, w, h) in heroesPositions:
-        pyautogui.moveTo(x+100, y, 1 + random()/2)
-        pyautogui.click()
+
+        #pyautogui.moveTo(x+100, y, 1 + random()/2)
+        # pyautogui.click()
+        pos_x = int(x+uniform(100, 110))
+        pos_y = int(y+uniform(10, 30))
+
+        helper.clickDestination(pos_x, pos_y, 5)
         sleep(1)
 
 
@@ -40,8 +45,13 @@ def selectHeroes(screen=None):
             if(emptySlotsAmount < 1):
                 break
 
-            pyautogui.moveTo(x+w/2, y+h/2-20, 1 + random()/2)
-            pyautogui.click()
+            #pyautogui.moveTo(x+w/2, y+h/2-20, 1 + random()/2)
+            # pyautogui.click()
+            pos_x = int((x+w/2)+uniform(10, 20))
+            pos_y = int((y+h/2)+uniform(-20, -40))
+
+            helper.clickDestination(pos_x, pos_y, 5)
+
             hasOneHeroToFight = True
 
             emptySlotsAmount = emptySlotsAmount - 1
@@ -64,13 +74,13 @@ def selectHeroes(screen=None):
 
 
 def backToStageSelectAndWait():
-    helper.clickDestination('btn-back-stage-select.png')
+    helper.clickDestinationImage('btn-back-stage-select.png')
     print(date.dateFormatted(), ' Waiting for near 2 hours...')
     sleep(7000)
 
 
 def startFight():
-    helper.clickDestination('boss-hunt-button.png', 'boss-hunt')
+    helper.clickDestinationImage('boss-hunt-button.png', 'boss-hunt')
     sleep(3)
 
     fight.execute(helper.printSreen())
@@ -118,7 +128,12 @@ def scrollHeroesList(screen):
 
     x, y, w, h = startScrollPosition[0]
 
-    pyautogui.moveTo(x+50, y+100, 1)
+    pos_x = int(x+uniform(50, 130))
+    pos_y = int(y+uniform(200, 300))
+
+    helper.moveDestination(pos_x, pos_y)
+    #pyautogui.moveTo(x+50, y+100, 1)
+
     pyautogui.dragRel(0, -150, duration=1, button='left')
 
     return

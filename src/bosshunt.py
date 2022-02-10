@@ -1,6 +1,6 @@
+from random import random, uniform
 from src import helper
 import pyautogui
-
 
 def execute():
     mapSelect(helper.printSreen())
@@ -8,7 +8,7 @@ def execute():
 
 def isLastStageLockedShowing(screen):
     positions = helper.getImagePositions(
-        'boss-stage-last-locked.png', 0.7, screen)
+        'boss-stage-last-locked.png', 0.9, screen)
 
     return len(positions) > 0
 
@@ -20,12 +20,15 @@ def selectAvailableStage(screen):
     if(len(availableStagePosition) < 1):
         return False
 
-    helper.clickDestination('boss-select-green.png', 'select-stage', 3, 0.9)
+    helper.clickDestinationImage(
+        'boss-select-green.png', 'select-stage', 3, 0.9)
 
     return True
 
 
-def scrollLastCompletedStagePosition(screen):
+def scrollLastCompletedStagePosition():
+    screen = helper.printSreen()
+
     completedStagesPositions = helper.getImagePositions(
         'boss-select-yellow.png', 0.9, screen)
 
@@ -37,8 +40,13 @@ def scrollLastCompletedStagePosition(screen):
 
     x, y, w, h = completedStagesPositions[positionsLen]
 
-    pyautogui.moveTo(x+100, y, 1)
-    pyautogui.dragRel(-200, 0, duration=1, button='left')
+    #pyautogui.moveTo(x+100, y, 1+random()/2)
+
+    pos_x = int(x+uniform(100, 120))
+    pos_y = int(y+uniform(5, 20))
+
+    helper.moveDestination(pos_x, pos_y, 2)
+    pyautogui.dragRel(-150, 0, duration=2, button='left')
 
     return
 
@@ -53,5 +61,5 @@ def mapSelect(screen):
             print('Last stage found but no available stages to fight!')
             break
 
-        if(scrollLastCompletedStagePosition(screen)):
+        if(scrollLastCompletedStagePosition()):
             continue
