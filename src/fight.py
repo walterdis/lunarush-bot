@@ -28,7 +28,12 @@ def handleFight():
             break
 
         x, y, w, h = versusIconPosition[0]
-        pyautogui.moveTo(x, y+300,  1 + random()/2)
+        #pyautogui.moveTo(x, y+300,  1 + random()/2)
+
+        pos_x = int(x+uniform(-150, 150))
+        pos_y = int(y+uniform(100, 200))
+
+        helper.moveDestination(pos_x, pos_y)
         pyautogui.click()
 
         print('Fight click ', clicksAmount)
@@ -46,7 +51,13 @@ def handleResultScreen(screen):
 
     if(len(resultTapOpen) > 0):
         x, y, w, h = resultTapOpen[0]
-        pyautogui.moveTo(x+10, y+10,  0.5 + random()/2)
+        
+        pos_x = int(x+uniform(10, 20))
+        pos_y = int(y+uniform(10, 20))
+
+        #pyautogui.moveTo(x+10, y+10,  0.5 + random()/2)
+        helper.moveDestination(pos_x, pos_y)
+
         pyautogui.click()
         time.sleep(5)
 
@@ -57,7 +68,13 @@ def handleResultScreen(screen):
         return
 
     x, y, w, h = resultEnergy[0]
-    pyautogui.moveTo(x, y+50,  0.5 + random()/2)
+    
+    pos_x = int(x+uniform(50, 80))
+    pos_y = int(y+uniform(50, 100))
+
+    #pyautogui.moveTo(x, y+50,  0.5 + random()/2)
+    
+    helper.moveDestination(pos_x, pos_y)
     pyautogui.click()
 
 

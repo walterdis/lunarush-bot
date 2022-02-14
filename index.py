@@ -54,12 +54,14 @@ def main():
         screen = helper.printSreen()
         if(isModeSelectScreen(screen)):
             print('Mode select found!!!')
-            helper.clickDestination('boss-fight-mode-icon.png', 'boss-fight-mode')
+            helper.clickDestinationImage('boss-fight-mode-icon.png', 'boss-fight-mode')
+            time.sleep(2)
 
         screen = helper.printSreen()
         if(isBossHuntStageSelect(screen)):
             print('Boss stage select screen found!!!')
             bosshunt.execute()
+            time.sleep(2)
 
         screen = helper.printSreen()
         if(isHeroSelectScreen(screen)):
