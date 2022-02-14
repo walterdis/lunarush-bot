@@ -30,8 +30,8 @@ def handleFight():
         x, y, w, h = versusIconPosition[0]
         #pyautogui.moveTo(x, y+300,  1 + random()/2)
 
-        pos_x = int(x+uniform(50, 380))
-        pos_y = int(y+uniform(100, 400))
+        pos_x = int(x+uniform(-150, 150))
+        pos_y = int(y+uniform(100, 200))
 
         helper.moveDestination(pos_x, pos_y)
         pyautogui.click()

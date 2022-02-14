@@ -7,25 +7,30 @@ import numpy as np
 import pyautogui
 
 try:
-    from pyHM import mouse
+    from pyclick import HumanClicker
 except ImportError or ModuleNotFoundError:
-    print('pyHM not found! Run pip install -r requirements.txt again.')
+    print('pyclick not found! Run pip install -r requirements.txt again.')
     time.sleep(5)
     sys.exit(1)
 
 #clicker = HumanClicker()
 
+hc = HumanClicker()
+pyautogui.MINIMUM_DURATION = 0.1
+pyautogui.MINIMUM_SLEEP = 0.1
+pyautogui.PAUSE = 1
 
-def moveDestination(x, y, time=3):
-    mouse.move(x, y, time)
 
+def moveDestination(x, y, time=2):
+    hc.move((int(x), int(y)), time)
 
-def clickDestination(x, y, time=3):
-    moveDestination(x, y, time)
+def clickDestination(x, y, duration=2):
+    moveDestination(x, y, duration)
+    time.sleep(1)
     pyautogui.click()
 
 
-def clickDestinationImage(img, name=None, timeout=3, threshold=0.7):
+def clickDestinationImage(img, name=None, timeout=2, threshold=0.7):
     if not name is None:
         pass
 
@@ -44,7 +49,7 @@ def clickDestinationImage(img, name=None, timeout=3, threshold=0.7):
         pos_click_x = round(x+w/2+uniform(2, 30))
         pos_click_y = round(y+h/2+uniform(-2, -10))
 
-        clickDestination(pos_click_x, pos_click_y)
+        clickDestination(pos_click_x, pos_click_y, 2)
 
         #pyautogui.moveTo(pos_click_x, pos_click_y, 1 + random()/2)
         # pyautogui.click()

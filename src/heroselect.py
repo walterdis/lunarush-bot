@@ -23,7 +23,7 @@ def removeDepletedHeroes(screen):
         pos_x = int(x+uniform(100, 110))
         pos_y = int(y+uniform(10, 30))
 
-        helper.clickDestination(pos_x, pos_y, 5)
+        helper.clickDestination(pos_x, pos_y, 2)
         sleep(1)
 
 
@@ -50,7 +50,7 @@ def selectHeroes(screen=None):
             pos_x = int((x+w/2)+uniform(10, 20))
             pos_y = int((y+h/2)+uniform(-20, -40))
 
-            helper.clickDestination(pos_x, pos_y, 5)
+            helper.clickDestination(pos_x, pos_y, 2)
 
             hasOneHeroToFight = True
 
@@ -131,7 +131,7 @@ def scrollHeroesList(screen):
     pos_x = int(x+uniform(50, 130))
     pos_y = int(y+uniform(200, 300))
 
-    helper.moveDestination(pos_x, pos_y)
+    helper.moveDestination(pos_x, pos_y, 1)
     #pyautogui.moveTo(x+50, y+100, 1)
 
     pyautogui.dragRel(0, -150, duration=1, button='left')
