@@ -24,6 +24,7 @@ pyautogui.PAUSE = 1
 def moveDestination(x, y, time=2):
     hc.move((int(x), int(y)), time)
 
+
 def clickDestination(x, y, duration=2):
     moveDestination(x, y, duration)
     time.sleep(1)
@@ -46,7 +47,7 @@ def clickDestinationImage(img, name=None, timeout=2, threshold=0.7):
 
         x, y, w, h = matches[0]
 
-        pos_click_x = round(x+w/2+uniform(2, 30))
+        pos_click_x = round(x+w/2+uniform(2, 10))
         pos_click_y = round(y+h/2+uniform(-2, -10))
 
         clickDestination(pos_click_x, pos_click_y, 2)
@@ -55,6 +56,12 @@ def clickDestinationImage(img, name=None, timeout=2, threshold=0.7):
         # pyautogui.click()
 
         return True
+
+
+def hasImage(name, threshold=0.7, img=None):
+    image = getImagePositions(name, threshold, img)
+
+    return len(image) > 0
 
 
 def getImage(filename):
@@ -91,3 +98,16 @@ def printSreen():
         sct_img = np.array(sct.grab(monitor))
 
         return sct_img[:, :, :3]
+
+
+def handlePopup(screen=None):
+    time.sleep(1)
+    if screen is None:
+        screen = printSreen()
+    
+    if(hasImage('button-ok.png', 0.8, screen)):
+        clickDestinationImage('button-ok.png', None, 2, 0.8)
+
+    if(hasImage('button-x.png', 0.8, screen)):
+        clickDestinationImage('button-x.png', None, 2, 0.8)
+

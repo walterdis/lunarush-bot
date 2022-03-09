@@ -19,6 +19,8 @@ def handleFight():
         bossIconPosition = getBossIconPosition(screen)
         versusIconPosition = getVersusIconPosition(screen)
 
+        print('Has Versus and Boss Icon Position: ', (bool) (len(versusIconPosition) and len(bossIconPosition)) > 0)
+
         if(len(bossIconPosition) < 1 and len(versusIconPosition) < 1):
             handleResultScreen(helper.printSreen())
             break
@@ -28,7 +30,6 @@ def handleFight():
             break
 
         x, y, w, h = versusIconPosition[0]
-        #pyautogui.moveTo(x, y+300,  1 + random()/2)
 
         pos_x = int(x+uniform(-150, 150))
         pos_y = int(y+uniform(100, 200))
@@ -80,15 +81,13 @@ def handleResultScreen(screen):
 
 def getVersusIconPosition(screen):
     position = helper.getImagePositions('fight-versus.png', 0.6, screen)
-    print('Versus Icon Position: ', len(position))
-
+    
     return position
 
 
 def getBossIconPosition(screen):
     position = helper.getImagePositions('fight-boss-icon.png', 0.7, screen)
-    print('Boss Icon Position: ', len(position))
-
+    
     return position
 
 

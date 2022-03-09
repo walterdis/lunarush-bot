@@ -9,8 +9,10 @@ def execute(screen):
 
     sleep(1)
 
-    selectHeroes()
+    hasHeroes = selectHeroes()
     startFight()
+
+    return hasHeroes
 
 
 def removeDepletedHeroes(screen):
@@ -36,7 +38,7 @@ def selectHeroes(screen=None):
     scrollAmount = 6
 
     if(emptySlotsAmount < 1):
-        return
+        return True
 
     hasOneHeroToFight = False
     while(emptySlotsAmount > 0):
@@ -45,8 +47,6 @@ def selectHeroes(screen=None):
             if(emptySlotsAmount < 1):
                 break
 
-            #pyautogui.moveTo(x+w/2, y+h/2-20, 1 + random()/2)
-            # pyautogui.click()
             pos_x = int((x+w/2)+uniform(10, 20))
             pos_y = int((y+h/2)+uniform(-20, -40))
 
@@ -69,14 +69,19 @@ def selectHeroes(screen=None):
         scrollAmount = scrollAmount - 1
         screen = helper.printSreen()
 
-    if(hasOneHeroToFight is False):
-        backToStageSelectAndWait()
+    if(hasOneHeroToFight is False and emptySlotsAmount > 2):
+        backToStageSelect()
+        return False
+
+    return True
 
 
-def backToStageSelectAndWait():
+def backToStageSelect():
     helper.clickDestinationImage('btn-back-stage-select.png')
-    print(date.dateFormatted(), ' Waiting for near 2 hours...')
-    sleep(7000)
+    print(date.dateFormatted(), ' Finished this gameplay...')
+
+    sleep(2)
+    # sleep(7000)
 
 
 def startFight():
@@ -112,7 +117,7 @@ def getHeroesInListWithDepletedEnergyPositions(screen):
 
 def getSelectedHeroesDepletedPositions(screen):
     positions = helper.getImagePositions(
-        'hero-select-depleted-energy.png', 0.9, screen)
+        'hero-select-depleted-energy.png', 0.85, screen)
 
     print('selected heroes no energy: ', len(positions))
     return positions

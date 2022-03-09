@@ -7,6 +7,7 @@ from random import random
 
 import numpy as np
 import pyautogui
+import pygetwindow
 import time
 import sys
 from src import login, helper, bosshunt, heroselect, fight, date
@@ -39,11 +40,41 @@ wolf = """
 print(wolf)
 time.sleep(4)
 
-def main():
 
+def main():
     time.sleep(1)
 
+    gameScreens = pygetwindow.getWindowsWithTitle('Luna Rush')
+    print('Windows with "Luna Rush" text title found: ', len(gameScreens))
+
     while True:
+        for current in gameScreens:
+            if "token" in current.title.lower():
+                continue
+
+            try:
+                current.activate()
+                if not current.isMaximized:
+                    print('not maximized')
+                    current.maximize()
+            except:
+                current.minimize()
+                current.maximize()
+
+            play()
+
+            time.sleep(2)
+
+        print('Finished all plays... waiting to begin again.')
+        time.sleep(720+uniform(20, 300))
+
+
+def play():
+    time.sleep(2)
+
+    while True:
+        helper.handlePopup()
+
         now = time.time()
 
         screen = helper.printSreen()
@@ -54,7 +85,8 @@ def main():
         screen = helper.printSreen()
         if(isModeSelectScreen(screen)):
             print('Mode select found!!!')
-            helper.clickDestinationImage('boss-fight-mode-icon.png', 'boss-fight-mode')
+            helper.clickDestinationImage(
+                'boss-fight-mode-icon.png', 'boss-fight-mode')
             time.sleep(2)
 
         screen = helper.printSreen()
@@ -66,12 +98,13 @@ def main():
         screen = helper.printSreen()
         if(isHeroSelectScreen(screen)):
             print('Hero select screen found!!!')
-            heroselect.execute(screen)
+            hasHero = heroselect.execute(screen)
+
+            if(not hasHero):
+                break
 
         screen = helper.printSreen()
         fight.execute(screen)
-
-        sys.stdout.flush()
 
         print('waiting ...')
         time.sleep(1)
