@@ -7,10 +7,15 @@ from random import random
 
 import numpy as np
 import pyautogui
-import pygetwindow
+
 import time
 import sys
 from src import login, helper, bosshunt, heroselect, fight, date
+
+try:
+    import pygetwindow
+except NotImplementedError or ModuleNotFoundError:
+    print('pygetwindow not suported') 
 
 
 #pyautogui.PAUSE = pause
@@ -44,6 +49,7 @@ time.sleep(4)
 def main():
     time.sleep(1)
 
+    
     if(sys.platform == "linux" or sys.platform == "linux2"):
         while True:
             play()
