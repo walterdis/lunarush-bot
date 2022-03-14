@@ -117,7 +117,7 @@ def getHeroesInListWithDepletedEnergyPositions(screen):
 
 def getSelectedHeroesDepletedPositions(screen):
     positions = helper.getImagePositions(
-        'hero-select-depleted-energy.png', 0.85, screen)
+        'hero-select-depleted-energy.png', 0.87, screen)
 
     print('selected heroes no energy: ', len(positions))
     return positions

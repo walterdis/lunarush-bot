@@ -44,6 +44,15 @@ time.sleep(4)
 def main():
     time.sleep(1)
 
+    if(sys.platform == "linux" or sys.platform == "linux2"):
+        while True:
+            play()
+
+            # 3600 seconds = 1 hour
+            waitTime = 7200 + uniform(20, 300)
+            print('Waiting ', round(waitTime), ' seconds...')
+            time.sleep(waitTime)
+
     gameScreens = pygetwindow.getWindowsWithTitle('Luna Rush')
     print('Windows with "Luna Rush" text title found: ', len(gameScreens))
 
