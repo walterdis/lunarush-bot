@@ -1,5 +1,13 @@
-# Multi Contas Implementado!
-Ainda em fase de testes, caso de algum problema, existem versões antigas disponíveis em https://github.com/walterdis/lunarush-bot/tags
+# Certifique-se de:
+
+- Deixar o jogo em inglês
+- Zoom do navegador em 125%
+- Configurar a qualidade do jogo para médio
+
+A última atualização trouxe mudanças no sistema de energia. O bot foi atualizado para funcionar a partir do momento que os personagens tem 2 ou mais energia.
+Não foi testado acima de 3 (para quem tem VIP) e abaixo de 2 energias, o bot fazia detecções errôneas.
+
+# Multi Contas Implementado! (apenas para windows)
 Ele detecta janelas com a palavra "Luna Rush", ou seja, caso o usuário possua algo além do jogo aberto que tenha esse nome, o bot vai interpretar que é uma janela do jogo.
 
 # Luna Rush Auto Clicker Bot

@@ -1,5 +1,7 @@
 from random import random, uniform
 from time import sleep
+
+import numpy as np
 from src import helper, fight, date
 import pyautogui
 
@@ -43,6 +45,7 @@ def selectHeroes(screen=None):
     hasOneHeroToFight = False
     while(emptySlotsAmount > 0):
         heroesPositions = getHeroesInListWithEnergyPositions(screen)
+
         for (x, y, w, h) in heroesPositions:
             if(emptySlotsAmount < 1):
                 break
@@ -100,11 +103,27 @@ def getEmptySlotPositions(screen):
 
 
 def getHeroesInListWithEnergyPositions(screen):
-    positions = helper.getImagePositions(
-        'hero-list-has-energy.png', 0.9, screen)
+    #positions = helper.getImagePositions(
+    #    'hero-select1x3-energy.png', 0.9, screen)
 
-    print('Heroes with energy: ', len(positions))
-    return positions
+    positions2 = helper.getImagePositions(
+        'hero-select2x3-energy.png', 0.95, screen)
+
+    positions3 = helper.getImagePositions(
+        'hero-select3x3-energy.png', 0.93, screen)
+
+    matrix = positions2
+    if(len(positions3) > 0):
+        if(len(matrix) > 0):
+            matrix = np.concatenate((matrix, positions3))
+        else:
+            matrix = positions3
+
+    matrix = np.unique(matrix, axis=0)
+
+    print('Merged Heroes positions with energy: ', len(matrix))
+
+    return matrix
 
 
 def getHeroesInListWithDepletedEnergyPositions(screen):
@@ -117,7 +136,7 @@ def getHeroesInListWithDepletedEnergyPositions(screen):
 
 def getSelectedHeroesDepletedPositions(screen):
     positions = helper.getImagePositions(
-        'hero-select-depleted-energy.png', 0.87, screen)
+        'hero-selected-0x3-depleted-energy.png', 0.89, screen)
 
     print('selected heroes no energy: ', len(positions))
     return positions
