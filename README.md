@@ -1,7 +1,7 @@
 # Certifique-se de:
 
 - Deixar o jogo em inglês
-- Zoom do navegador em 125%
+- Zoom do navegador em 100%
 - Configurar a qualidade do jogo para médio
 
 A última atualização trouxe mudanças no sistema de energia. O bot foi atualizado para funcionar a partir do momento que os personagens tem 2 ou mais energia.

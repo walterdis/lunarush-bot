@@ -51,7 +51,7 @@ def selectHeroes(screen=None):
                 break
 
             pos_x = int((x+w/2)+uniform(10, 20))
-            pos_y = int((y+h/2)+uniform(-20, -40))
+            pos_y = int((y+h/2)+uniform(-10, -20))
 
             helper.clickDestination(pos_x, pos_y, 2)
 
@@ -107,10 +107,10 @@ def getHeroesInListWithEnergyPositions(screen):
     #    'hero-select1x3-energy.png', 0.9, screen)
 
     positions2 = helper.getImagePositions(
-        'hero-select2x3-energy.png', 0.95, screen)
+        'hero-select2x3-energy.png', 0.94, screen)
 
     positions3 = helper.getImagePositions(
-        'hero-select3x3-energy.png', 0.93, screen)
+        'hero-select3x3-energy.png', 0.92, screen)
 
     matrix = positions2
     if(len(positions3) > 0):
