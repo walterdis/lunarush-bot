@@ -15,7 +15,7 @@ from src import login, helper, bosshunt, heroselect, fight, date
 try:
     import pygetwindow
 except NotImplementedError or ModuleNotFoundError:
-    print('pygetwindow not suported') 
+    print('pygetwindow not suported')
 
 
 #pyautogui.PAUSE = pause
@@ -53,10 +53,9 @@ wolf = """
 print(wolf)
 time.sleep(4)
 
-
 def main():
     time.sleep(1)
-    
+
     if(sys.platform == "linux" or sys.platform == "linux2"):
         while True:
             play()
@@ -87,8 +86,9 @@ def main():
 
             time.sleep(2)
 
-        print('Finished all plays... waiting to begin again.')
-        time.sleep(5000+uniform(20, 300))
+        waitTime = 5000 + uniform(20, 300)
+        print('Finished all plays... waiting ', round(waitTime), ' seconds to begin again.')
+        time.sleep(waitTime)
 
 
 def play():
