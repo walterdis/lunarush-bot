@@ -111,7 +111,7 @@ def handlePopup(screen=None):
     if(hasImage('button-x.png', 0.8, screen)):
         clickDestinationImage('button-x.png', None, 2, 0.8)
 
-     if(hasImage('button-ok2.png', 0.8, screen)):
+    if(hasImage('button-ok2.png', 0.8, screen)):
         clickDestinationImage('button-ok2.png', None, 2, 0.8)
 
     if(hasImage('button-seta-dupla.png', 0.8, screen)):
